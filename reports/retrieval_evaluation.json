@@ -1,0 +1,22 @@
+{
+  "model": "Two-tower retrieval + FAISS",
+  "dataset": "MovieLens 25M",
+  "evaluation_split": "Chronological validation split",
+  "positive_rating_threshold": 4.0,
+  "users_requested": 1000,
+  "users_evaluated": 1000,
+  "indexed_movies": 10027,
+  "metrics": {
+    "Recall@10": 0.001459,
+    "NDCG@10": 0.004511,
+    "Recall@20": 0.003458,
+    "NDCG@20": 0.005157
+  },
+  "limitations": [
+    "The two-tower model was trained on a random 500,000-interaction sample of the chronological training split.",
+    "Sampled training history is incomplete and may not contain every training interaction.",
+    "Evaluation is restricted to users and movies known to the model.",
+    "Recall and NDCG are offline ranking metrics, not online CTR.",
+    "This evaluation should be refined before claiming a fair comparison with the popularity baseline."
+  ]
+}

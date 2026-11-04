@@ -1,0 +1,10 @@
+.venv/
+.venv-py315-backup/
+data/
+frontend/
+reports/
+tests/
+__pycache__/
+.git/
+*.pyc
+*.log

@@ -1,0 +1,36 @@
+name: "dcn_ranker"
+platform: "onnxruntime_onnx"
+max_batch_size: 128
+
+input [
+  {
+    name: "dense_features"
+    data_type: TYPE_FP32
+    dims: [ 24 ]
+  },
+  {
+    name: "movie_index"
+    data_type: TYPE_INT32
+    dims: [ 1 ]
+  },
+  {
+    name: "user_index"
+    data_type: TYPE_INT32
+    dims: [ 1 ]
+  }
+]
+
+output [
+  {
+    name: "relevance_v2"
+    data_type: TYPE_FP32
+    dims: [ 1 ]
+  }
+]
+
+instance_group [
+  {
+    count: 1
+    kind: KIND_CPU
+  }
+]

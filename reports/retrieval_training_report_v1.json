@@ -1,0 +1,14 @@
+{
+  "epochs_completed": 3,
+  "training_loss_by_epoch": [
+    28005.74609375,
+    27367.404296875,
+    26204.294921875
+  ],
+  "final_training_loss": 26204.294921875,
+  "training_seconds": 31.63,
+  "embedding_dimension": 32,
+  "positive_interactions": 249205,
+  "unique_users": 85244,
+  "unique_movies": 10027
+}

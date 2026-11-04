@@ -1,0 +1,31 @@
+{
+  "evaluation": "chronological validation, candidate-constrained",
+  "relevant_rating_threshold": 4.0,
+  "users_selected": 500,
+  "users_with_candidates": 475,
+  "users_with_validation_hit_in_candidates": 151,
+  "candidate_count_requested": 100,
+  "candidate_generation": "two-tower user embeddings + FAISS",
+  "results": {
+    "retrieval": {
+      "Recall@10": 0.0024890827632920794,
+      "Recall@20": 0.004699251833413543,
+      "NDCG@10": 0.006751666124684446,
+      "NDCG@20": 0.0074482379634905945
+    },
+    "dcn_reranked": {
+      "Recall@10": 0.007032850443108557,
+      "Recall@20": 0.010782961278517455,
+      "NDCG@10": 0.012124634422491109,
+      "NDCG@20": 0.012816007828565493
+    }
+  },
+  "limitations": [
+    "Evaluation is restricted to users and movies known to the trained DCN.",
+    "Recall is measured over all relevant validation movies for eligible users, while candidates are restricted to the retrieved set.",
+    "The model was trained using a random sample from the chronological training partition.",
+    "Feature tables are derived from the training partition.",
+    "The evaluator compares retrieval order with DCN reranking on the same candidate set.",
+    "This is an educational prototype, not a production or clinical system."
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "experiment_type": "offline paired ranking comparison",
+  "dataset_split": "chronological validation",
+  "relevance_threshold": 4.0,
+  "selected_users": 500,
+  "users_with_candidates": 475,
+  "users_with_relevant_candidate": 151,
+  "requested_candidates_per_user": 100,
+  "ranker_a": "FAISS retrieval order",
+  "ranker_b": "DCN reranking on the same retrieved candidates",
+  "metrics": {
+    "retrieval": {
+      "Recall@10": 0.0024890827632920794,
+      "NDCG@10": 0.006751666124684446,
+      "Recall@20": 0.004699251833413543,
+      "NDCG@20": 0.0074482379634905945
+    },
+    "dcn": {
+      "Recall@10": 0.007032850443108557,
+      "NDCG@10": 0.012124634422491109,
+      "Recall@20": 0.010782961278517455,
+      "NDCG@20": 0.012816007828565493
+    }
+  },
+  "comparison": {
+    "Recall@10": {
+      "retrieval_baseline": 0.0024890827632920794,
+      "dcn_treatment": 0.007032850443108557,
+      "absolute_difference": 0.004543767679816478,
+      "relative_improvement_percent": 182.54787453539137
+    },
+    "NDCG@10": {
+      "retrieval_baseline": 0.006751666124684446,
+      "dcn_treatment": 0.012124634422491109,
+      "absolute_difference": 0.005372968297806663,
+      "relative_improvement_percent": 79.57988737273024
+    },
+    "Recall@20": {
+      "retrieval_baseline": 0.004699251833413543,
+      "dcn_treatment": 0.010782961278517455,
+      "absolute_difference": 0.006083709445103912,
+      "relative_improvement_percent": 129.4612346979646
+    },
+    "NDCG@20": {
+      "retrieval_baseline": 0.0074482379634905945,
+      "dcn_treatment": 0.012816007828565493,
+      "absolute_difference": 0.0053677698650748985,
+      "relative_improvement_percent": 72.06764729304257
+    }
+  },
+  "ndcg_at_10_paired_bootstrap_95_percent_ci": {
+    "mean_difference": 0.005372968297806663,
+    "ci_95_lower": 0.001096508064263757,
+    "ci_95_upper": 0.009981324487461987
+  },
+  "bootstrap_samples": 2000,
+  "seed": 42,
+  "limitations": [
+    "This is an offline experiment, not a live online A/B test.",
+    "Both rankers use the same retrieved candidates.",
+    "Recall and NDCG are measured against held-out ratings >= 4.0.",
+    "Users and movies are restricted to those represented by the trained model.",
+    "CTR cannot be calculated without actual impression and click logs.",
+    "The DCN is evaluated on historical data and may not generalize to live users.",
+    "Offline metric improvements do not establish statistical or business significance by themselves."
+  ]
+}

@@ -1,0 +1,64 @@
+﻿# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+env/
+*.egg-info/
+# Environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+# Large datasets
+data/ml-25m/
+data/ml-25m.zip
+# Large processed datasets
+data/processed/*.csv
+# Logs and temporary files
+*.log
+logs/
+airflow/logs/
+.pytest_cache/
+*.tmp
+*.bak
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+# Operating system
+.DS_Store
+Thumbs.db
+desktop.ini
+# IDE
+.vscode/
+.idea/
+# Temporary and backup files
+*backup*
+docker-compose.backup.yml
+docker-compose_before_airflow.yml
+requirements-backup.txt
+Dockerfile.txt
+# Unnecessary model backups
+models/dcn_ranker_compat.h5
+models/retrieval_embeddings_v1.npz
+models/two_tower_v1.weights.h5
+# Airflow generated files
+airflow/backups/
+airflow/logs/
+airflow/**/__pycache__/
+# Frontend generated files
+frontend/node_modules/
+frontend/dist/
+frontend/Dockerfile.txt
+# Old API versions
+src/api_before_*.py
+# Triton invalid backup model
+triton/models/dcn_ranker/model_invalid_lookup_backup.onnx
+
+docker-compose.airflow.yml

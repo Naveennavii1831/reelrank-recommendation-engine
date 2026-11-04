@@ -1,0 +1,16 @@
+{
+  "model": "Two-tower retrieval",
+  "dataset": "MovieLens 25M development sample",
+  "original_sample_interactions": 500000,
+  "positive_interactions": 249205,
+  "unique_users": 85244,
+  "unique_movies": 10027,
+  "positive_rating_threshold": 4.0,
+  "embedding_dimension": 32,
+  "epochs": 5,
+  "batch_size": 2048,
+  "learning_rate": 0.05,
+  "random_seed": 42,
+  "training_seconds": 45.38,
+  "device": "CPU-compatible TensorFlow execution"
+}

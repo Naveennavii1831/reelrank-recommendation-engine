@@ -1,0 +1,40 @@
+﻿services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8001:8000"
+    environment:
+      TF_USE_LEGACY_KERAS: "1"
+      REDIS_URL: redis://host.docker.internal:6379/0
+      RECOMMENDATION_CACHE_TTL: "300"
+    volumes:
+      - ./data/processed:/app/data/processed:ro
+      - ./reports:/app/reports
+      - ./src:/app/src:ro
+    restart: unless-stopped
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3001:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+  airflow:
+    image: apache/airflow:3.1.3
+    container_name: reelrank-airflow
+    command: standalone
+    ports:
+      - "8080:8080"
+    environment:
+      AIRFLOW__CORE__LOAD_EXAMPLES: "False"
+      AIRFLOW__CORE__DAGS_FOLDER: /opt/airflow/dags
+      REELRANK_PROJECT_DIR: /opt/reelrank
+    volumes:
+      - ./airflow/dags:/opt/airflow/dags:ro
+      - ./airflow/logs:/opt/airflow/logs
+      - ./:/opt/reelrank:ro
+    restart: unless-stopped

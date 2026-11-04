@@ -1,0 +1,19 @@
+{
+  "model_type": "DCN-style binary relevance ranker",
+  "sample_size": 300000,
+  "positive_label_rate": 0.4984300136566162,
+  "epochs": 5,
+  "batch_size": 2048,
+  "training_seconds": 32.08,
+  "internal_validation_auc": 0.7139609772879949,
+  "internal_validation_log_loss": 0.880010724067688,
+  "final_training_loss": 0.29581892490386963,
+  "final_internal_validation_loss": 0.8800105452537537,
+  "limitations": [
+    "Internal validation uses a random split of sampled training interactions.",
+    "Chronological ranking evaluation has not yet been performed.",
+    "Feature tables are based on the training partition, but the random internal split can share users and movies across both sides.",
+    "AUC and log loss measure binary relevance prediction, not top-K recommendation quality.",
+    "The model is an educational prototype."
+  ]
+}
