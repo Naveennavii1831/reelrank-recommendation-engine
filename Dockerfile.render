@@ -1,0 +1,21 @@
+FROM python:3.12-slim
+ENV PYTHONUNBUFFERED=1
+ENV TF_USE_LEGACY_KERAS=1
+WORKDIR /app
+COPY requirements.render.txt .
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir -r requirements.render.txt
+RUN mkdir -p src models data/processed triton/models/dcn_ranker/1
+COPY src/api_before_triton.py ./src/api_before_triton.py
+COPY models/dcn_ranker_metadata.json ./models/
+COPY models/retrieval_embeddings.npz ./models/
+COPY models/movie_faiss.index ./models/
+COPY models/faiss_movie_ids.npy ./models/
+COPY triton/models/dcn_ranker/1/model.onnx ./triton/models/dcn_ranker/1/
+COPY data/processed/user_features.csv ./data/processed/
+COPY data/processed/movie_features.csv ./data/processed/
+COPY data/processed/seen_history.zip ./data/processed/
+RUN python -c "import zipfile; z=zipfile.ZipFile('data/processed/seen_history.zip'); z.extractall('data/processed'); z.close()" && \
+    rm data/processed/seen_history.zip
+EXPOSE 8000
+CMD ["uvicorn", "src.api_before_triton:app", "--host", "0.0.0.0", "--port", "8000"]

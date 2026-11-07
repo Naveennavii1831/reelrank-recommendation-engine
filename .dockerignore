@@ -1,6 +1,11 @@
 .venv/
 .venv-py315-backup/
-data/
+data/*
+!data/processed/
+data/processed/*
+!data/processed/user_features.csv
+!data/processed/movie_features.csv
+!data/processed/seen_history.zip
 frontend/
 reports/
 tests/

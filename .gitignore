@@ -62,3 +62,5 @@ src/api_before_*.py
 triton/models/dcn_ranker/model_invalid_lookup_backup.onnx
 
 docker-compose.airflow.yml
+
+data/processed/*.sqlite3
