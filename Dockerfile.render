@@ -18,4 +18,5 @@ COPY data/processed/seen_history.zip ./data/processed/
 RUN python -c "import zipfile; z=zipfile.ZipFile('data/processed/seen_history.zip'); z.extractall('data/processed'); z.close()" && \
     rm data/processed/seen_history.zip
 EXPOSE 8000
-CMD ["uvicorn", "src.api_before_triton:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["sh", "-c", "uvicorn src.api_before_triton:app --host 0.0.0.0 --port ${PORT:-8000}"]
+
