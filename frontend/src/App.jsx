@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./App.css";
 
 // Nginx will forward /api requests to the FastAPI backend.
-const API_URL = "/api";
+const API_URL = import.meta.env.VITE_API_URL || "/api";
 
 function App() {
   const [userId, setUserId] = useState("1");
