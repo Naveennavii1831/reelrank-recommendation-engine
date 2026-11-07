@@ -619,6 +619,7 @@ app.add_middleware(
         "http://127.0.0.1:5173",
         "http://localhost:3001",
         "http://127.0.0.1:3001",
+        "https://luxury-speculoos-b9883e.netlify.app",
     ],
     allow_credentials=True,
     allow_methods=["*"],
